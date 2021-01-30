@@ -1,15 +1,20 @@
 import ChartComponent from "./index.jsx";
 import { connect } from "react-redux";
-import { getTest } from "../../../store/chart/action";
+import {
+  changeCurrency,
+  getHistoryChartData,
+} from "../../../store/chart/action";
 
 const mapStateToProps = (state) => {
   return {
-    test: state.chart.test,
+    currentCurrency: state.chart.currentCurrency,
+    historyData: state.chart.historyData,
   };
 };
 
 const mapDispatchToProps = {
-  getTest,
+  changeCurrency,
+  getHistoryChartData,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChartComponent);
