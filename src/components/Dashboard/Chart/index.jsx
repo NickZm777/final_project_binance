@@ -8,13 +8,9 @@ export default function ChartComponent(props) {
     historyData,
     currentCurrency,
     currentInterval,
+    isChartLine,
+    historyDataLine,
   } = props;
-
-  // useEffect(() => {
-  //   if (historyData.length === 0) {
-  //     getHistoryChartData("candle", currentCurrency, "1h", "500");
-  //   }
-  // });
 
   useEffect(() => {
     getHistoryChartData("candle", currentCurrency, currentInterval, "500");
@@ -35,9 +31,16 @@ export default function ChartComponent(props) {
       secondsVisible: false,
     },
   };
+
   const candlestickSeries = [
     {
       data: historyData,
+    },
+  ];
+
+  const lineSeries = [
+    {
+      data: historyDataLine,
     },
   ];
 
@@ -46,7 +49,8 @@ export default function ChartComponent(props) {
       <Chart>
         <Graph
           options={options}
-          candlestickSeries={candlestickSeries}
+          candlestickSeries={isChartLine ? null : candlestickSeries}
+          lineSeries={isChartLine && lineSeries}
           autoWidth
           autoHeight
         />

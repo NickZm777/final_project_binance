@@ -4,6 +4,7 @@ import {
   changeCurrency,
   getHistoryChartData,
   changeInterval,
+  getHistoryChartDataLine,
 } from "../../../store/chart/action";
 
 const mapStateToProps = (state) => {
@@ -11,6 +12,8 @@ const mapStateToProps = (state) => {
     currentInterval: state.chart.currentInterval,
     currentCurrency: state.chart.currentCurrency,
     historyData: state.chart.historyData,
+    historyDataLine: state.chart.historyDataLine,
+    isChartLine: state.chart.isChartLine,
   };
 };
 

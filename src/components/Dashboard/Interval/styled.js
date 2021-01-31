@@ -4,6 +4,9 @@ const List = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  .active {
+    border: 2px solid red;
+  }
 `;
 
 List.Button = styled.button``;
