@@ -3,7 +3,12 @@ import Graph from "kaktana-react-lightweight-charts";
 import { Chart } from "./styled";
 
 export default function ChartComponent(props) {
-  const { getHistoryChartData, historyData, currentCurrency } = props;
+  const {
+    getHistoryChartData,
+    historyData,
+    currentCurrency,
+    currentInterval,
+  } = props;
 
   // useEffect(() => {
   //   if (historyData.length === 0) {
@@ -12,8 +17,8 @@ export default function ChartComponent(props) {
   // });
 
   useEffect(() => {
-    getHistoryChartData("candle", currentCurrency, "1h", "500");
-  }, [currentCurrency]);
+    getHistoryChartData("candle", currentCurrency, currentInterval, "500");
+  }, [currentCurrency, currentInterval]);
 
   const options = {
     alignLabels: true,
@@ -23,7 +28,7 @@ export default function ChartComponent(props) {
       fixLeftEdge: true,
       lockVisibleTimeRangeOnResize: true,
       rightBarStaysOnScroll: true,
-      borderVisible: false,
+      borderVisible: true,
       borderColor: "#fff000",
       visible: true,
       timeVisible: true,
@@ -43,7 +48,7 @@ export default function ChartComponent(props) {
           options={options}
           candlestickSeries={candlestickSeries}
           autoWidth
-          height={320}
+          autoHeight
         />
       </Chart>
     </Fragment>

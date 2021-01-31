@@ -5,11 +5,16 @@ const Dashboard = styled.div`
   flex-direction: column;
 `;
 
+Dashboard.TopInterval = styled.div`
+  border: 1px solid grey;
+  margin: 15px;
+`;
+
 Dashboard.Top = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 700px;
+  height: 300px;
   border: 1px solid grey;
   margin: 15px;
 `;

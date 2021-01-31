@@ -1,4 +1,4 @@
-import ListComponent from "./index.jsx";
+import IntervalComponent from "./index.js";
 import { connect } from "react-redux";
 import {
   changeCurrency,
@@ -9,6 +9,7 @@ import {
 const mapStateToProps = (state) => {
   return {
     currentCurrency: state.chart.currentCurrency,
+    currentInterval: state.chart.currentInterval,
   };
 };
 
@@ -18,4 +19,4 @@ const mapDispatchToProps = {
   changeInterval,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(IntervalComponent);

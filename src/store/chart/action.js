@@ -2,12 +2,22 @@ import { historyFeed } from "./../../service/api/history";
 
 export const CHANGE_CURRENCY = "CHANGE_CURRENCY";
 export const GET_HISTORY_DATA = "GET_HISTORY_DATA";
+export const CHANGE_INTERVAL = "CHANGE_INTERVAL";
 
 export function changeCurrency(currency) {
   return (dispatch) => {
     dispatch({
       type: CHANGE_CURRENCY,
       payload: currency,
+    });
+  };
+}
+
+export function changeInterval(interval) {
+  return (dispatch) => {
+    dispatch({
+      type: CHANGE_INTERVAL,
+      payload: interval,
     });
   };
 }
