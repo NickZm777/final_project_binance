@@ -1,10 +1,12 @@
 import { historyFeed } from "./../../service/api/history";
+import { setSocketConnection } from "./../../store/chart/action";
 
 export const CHANGE_CURRENCY = "CHANGE_CURRENCY";
 export const GET_HISTORY_DATA = "GET_HISTORY_DATA";
 export const CHANGE_INTERVAL = "CHANGE_INTERVAL";
 export const GET_HISTORY_DATA_LINE = "GET_HISTORY_DATA_LINE";
 export const SET_CHART_TYPE = "SET_CHART_TYPE";
+export const IS_SOCKET_OPEN = "IS_SOCKET_OPEN";
 
 export function changeCurrency(currency) {
   return (dispatch) => {
@@ -65,7 +67,20 @@ export function setChartType(isLine) {
   };
 }
 
-export function initSocketConnection() {}
+// export function initSocketConnection() {
+//   return (dispatch) => {
+//     setSocketConnection();
+//   };
+// }
+
+export function changeSocketStatus(isSocketOpen) {
+  return (dispatch) => {
+    dispatch({
+      type: IS_SOCKET_OPEN,
+      payload: isSocketOpen,
+    });
+  };
+}
 
 // export function getHistoryChartDataLine(type, pair, interval, limit) {
 //   return (dispatch) => {

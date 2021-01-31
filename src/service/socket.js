@@ -1,5 +1,21 @@
 import { BASE_SOCKET_URL } from "./../constans/binance";
 
-function setSocketConnection() {
-  var socket = new WebSocket(BASE_SOCKET_URL);
+let currencySocket;
+
+function setSocketConnection(currentCurrency, changeSocketStatus) {
+  currencySocket = new WebSocket(
+    `${BASE_SOCKET_URL}/stream?streams=ethbtc@ticker/ethbtc@kline_1m`
+  );
+  currencySocket.onopen = function () {
+    changeSocketStatus(true);
+  };
+  currencySocket.onmessage = (message) => {
+    console.log(JSON.parse(message.data));
+  };
 }
+
+function disconnectSocketConnection(currencySocket) {
+  currencySocket.close();
+}
+
+export { setSocketConnection, disconnectSocketConnection };

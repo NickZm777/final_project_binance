@@ -4,6 +4,7 @@ import {
   changeCurrency,
   getHistoryChartData,
   changeInterval,
+  changeSocketStatus,
 } from "./../../../store/chart/action";
 
 const mapStateToProps = (state) => {
@@ -16,6 +17,7 @@ const mapDispatchToProps = {
   changeCurrency,
   getHistoryChartData,
   changeInterval,
+  changeSocketStatus,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListComponent);

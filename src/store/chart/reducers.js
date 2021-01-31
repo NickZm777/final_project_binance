@@ -4,6 +4,7 @@ import {
   CHANGE_INTERVAL,
   GET_HISTORY_DATA_LINE,
   SET_CHART_TYPE,
+  IS_SOCKET_OPEN,
 } from "./action";
 
 const ACTION_HANDLERS = {
@@ -26,6 +27,9 @@ const ACTION_HANDLERS = {
   [SET_CHART_TYPE]: (state, action) => {
     return { ...state, isChartLine: action.payload };
   },
+  [IS_SOCKET_OPEN]: (state, action) => {
+    return { ...state, isSocketOpen: action.payload };
+  },
 };
 
 const initialState = {
@@ -34,6 +38,7 @@ const initialState = {
   historyData: [],
   historyDataLine: [],
   isChartLine: false,
+  isSocketOpen: false,
 };
 
 export default (state = initialState, action) => {

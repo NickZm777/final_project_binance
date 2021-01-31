@@ -1,9 +1,22 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { CURRENCY_ARRAY } from "./../../../constans/binance";
+import {
+  disconnectSocketConnection,
+  setSocketConnection,
+} from "./../../../service/socket";
 import { List } from "./styled";
 
 export default function ListComponent(props) {
-  const { changeCurrency, getHistoryChartData } = props;
+  const {
+    changeCurrency,
+    initSocketConnection,
+    currentCurrency,
+    changeSocketStatus,
+  } = props;
+
+  useEffect(() => {
+    setSocketConnection(currentCurrency, changeSocketStatus);
+  }, [currentCurrency]);
 
   return (
     <List>
