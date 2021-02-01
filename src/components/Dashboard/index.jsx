@@ -4,7 +4,6 @@ import ListComponent from "./List/ListContainer";
 import IntervalComponent from "./Interval/IntervalContainer";
 import ChartComponent from "./Chart/ChartContainer";
 import { Dashboard } from "./styled";
-// import ChartComponentLine from "./ChartLine/ChartLineContainer";
 
 export function DashboardComponent() {
   return (
@@ -18,7 +17,6 @@ export function DashboardComponent() {
       </Dashboard.Top>
       <Dashboard.Bottom>
         <TradingBoard />
-        {/* <ChartComponentLine /> */}
       </Dashboard.Bottom>
     </Dashboard>
   );
