@@ -67,12 +67,6 @@ export function setChartType(isLine) {
   };
 }
 
-// export function initSocketConnection() {
-//   return (dispatch) => {
-//     setSocketConnection();
-//   };
-// }
-
 export function changeSocketStatus(isSocketOpen) {
   return (dispatch) => {
     dispatch({
@@ -81,22 +75,3 @@ export function changeSocketStatus(isSocketOpen) {
     });
   };
 }
-
-// export function getHistoryChartDataLine(type, pair, interval, limit) {
-//   return (dispatch) => {
-//     historyFeed(type, pair, interval, limit).then((data) => {
-//       const dataArray = [];
-//       data.data.forEach((line) => {
-//         const dataObject = {
-//           time: line[0] / 1000,
-//           value: line[1],
-//         };
-//         dataArray.push(dataObject);
-//       });
-//       dispatch({
-//         type: GET_HISTORY_DATA_LINE,
-//         payload: dataArray,
-//       });
-//     });
-//   };
-// }

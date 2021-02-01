@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 const List = styled.div`
   width: 150px;
+  .active {
+    border: 1px solid orange;
+    background-color: lightblue;
+    transition: 1s;
 `;
 
 List.Item = styled.div`
@@ -11,7 +15,7 @@ List.Item = styled.div`
   cursor: pointer;
   transition: 0.3s;
   &:hover {
-    color: green;
+    color: red;
   }
 `;
 export { List };

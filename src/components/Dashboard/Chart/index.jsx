@@ -38,7 +38,7 @@ export default function ChartComponent(props) {
     },
   ];
 
-  const lineSeries = [
+  const areaSeries = [
     {
       data: historyDataLine,
     },
@@ -50,7 +50,7 @@ export default function ChartComponent(props) {
         <Graph
           options={options}
           candlestickSeries={isChartLine ? null : candlestickSeries}
-          lineSeries={isChartLine && lineSeries}
+          areaSeries={isChartLine && areaSeries}
           autoWidth
           autoHeight
         />

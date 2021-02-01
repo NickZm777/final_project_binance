@@ -3,13 +3,17 @@ import { INTERVAL_ARRAY } from "./../../../constans/binance";
 import { List } from "./styled";
 
 export default function IntervalComponent(props) {
-  const { changeInterval, setChartType, isChartLine } = props;
+  const { changeInterval, setChartType, isChartLine, currentInterval } = props;
 
   return (
     <List>
       {INTERVAL_ARRAY.map((item) => {
         return (
-          <List.Item onClick={() => changeInterval(item)} key={item}>
+          <List.Item
+            onClick={() => changeInterval(item)}
+            key={item}
+            className={currentInterval === item ? "active" : ""}
+          >
             {item}
           </List.Item>
         );

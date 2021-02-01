@@ -22,7 +22,11 @@ export default function ListComponent(props) {
     <List>
       {CURRENCY_ARRAY.map((item) => {
         return (
-          <List.Item onClick={() => changeCurrency(item)} key={item}>
+          <List.Item
+            onClick={() => changeCurrency(item)}
+            key={item}
+            className={currentCurrency === item ? "active" : ""}
+          >
             {item}
           </List.Item>
         );

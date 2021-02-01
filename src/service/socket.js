@@ -10,7 +10,7 @@ function setSocketConnection(currentCurrency, changeSocketStatus) {
     changeSocketStatus(true);
   };
   currencySocket.onmessage = (message) => {
-    console.log(JSON.parse(message.data));
+    // console.log(JSON.parse(message.dыata));
   };
 }
 
