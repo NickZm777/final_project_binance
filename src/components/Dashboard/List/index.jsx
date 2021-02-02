@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from "react";
+import ListItem from "./ListItem/index.jsx";
 import { CURRENCY_ARRAY } from "./../../../constans/binance";
 import {
   disconnectSocketConnection,
@@ -12,23 +13,32 @@ export default function ListComponent(props) {
     initSocketConnection,
     currentCurrency,
     changeSocketStatus,
+    initCurrencyObject,
+    currencyObject,
+    isSocketOpen,
+    updateCurrencyObject,
   } = props;
 
   useEffect(() => {
-    setSocketConnection(currentCurrency, changeSocketStatus);
-  }, [currentCurrency]);
+    if (Object.keys(currencyObject).length === 0) {
+      initCurrencyObject();
+    }
+    if (isSocketOpen === false) {
+      setSocketConnection("", changeSocketStatus, updateCurrencyObject);
+    }
+  }, []);
 
   return (
     <List>
       {CURRENCY_ARRAY.map((item) => {
         return (
-          <List.Item
-            onClick={() => changeCurrency(item)}
+          <ListItem
+            changeCurrency={changeCurrency}
+            currentCurrency={currentCurrency}
+            currencyObject={currencyObject[item]}
             key={item}
-            className={currentCurrency === item ? "active" : ""}
-          >
-            {item}
-          </List.Item>
+            name={item}
+          ></ListItem>
         );
       })}
     </List>

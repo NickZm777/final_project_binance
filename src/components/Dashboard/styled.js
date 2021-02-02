@@ -14,7 +14,7 @@ Dashboard.Top = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 300px;
+  ${"" /* height: 300px; */}
   border: 1px solid grey;
   margin: 15px;
 `;

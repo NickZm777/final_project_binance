@@ -1,3 +1,4 @@
+import { CURRENCY_ARRAY } from "../../constans/binance";
 import { historyFeed } from "./../../service/api/history";
 import { setSocketConnection } from "./../../store/chart/action";
 
@@ -7,6 +8,8 @@ export const CHANGE_INTERVAL = "CHANGE_INTERVAL";
 export const GET_HISTORY_DATA_LINE = "GET_HISTORY_DATA_LINE";
 export const SET_CHART_TYPE = "SET_CHART_TYPE";
 export const IS_SOCKET_OPEN = "IS_SOCKET_OPEN";
+export const INIT_CURRENCY_OBJECT = "INIT_CURRENCY_OBJECT";
+export const UPDATE_CURRENCY_OBJECT = "UPDATE_CURRENCY_OBJECT";
 
 export function changeCurrency(currency) {
   return (dispatch) => {
@@ -72,6 +75,33 @@ export function changeSocketStatus(isSocketOpen) {
     dispatch({
       type: IS_SOCKET_OPEN,
       payload: isSocketOpen,
+    });
+  };
+}
+
+export function initCurrencyObject() {
+  let currencyObject = {};
+  CURRENCY_ARRAY.forEach((currency) => {
+    currencyObject[currency] = {};
+  });
+  return (dispatch) => {
+    dispatch({
+      type: INIT_CURRENCY_OBJECT,
+      payload: currencyObject,
+    });
+  };
+}
+
+export function updateCurrencyObject(object) {
+  const obj = {
+    cur: object.s,
+    bid: object.b,
+    ask: object.a,
+  };
+  return (dispatch) => {
+    dispatch({
+      type: UPDATE_CURRENCY_OBJECT,
+      payload: obj,
     });
   };
 }

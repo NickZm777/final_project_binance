@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import { INTERVAL_ARRAY } from "./../../../constans/binance";
 import { List } from "./styled";
+import Candle from "./image/4.png";
+import Line from "./image/5.png";
 
 export default function IntervalComponent(props) {
   const { changeInterval, setChartType, isChartLine, currentInterval } = props;
@@ -18,21 +20,20 @@ export default function IntervalComponent(props) {
           </List.Item>
         );
       })}
-      <div>
+      <List.Changer>
         <List.Button
           onClick={() => setChartType(false)}
           className={isChartLine ? "" : "active"}
         >
-          {" "}
-          Candles{" "}
+          <img src={Candle}></img>
         </List.Button>
         <List.Button
           onClick={() => setChartType(true)}
           className={!isChartLine ? "" : "active"}
         >
-          Line
+          <img src={Line}></img>
         </List.Button>
-      </div>
+      </List.Changer>
     </List>
   );
 }

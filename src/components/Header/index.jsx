@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Head } from './styled'
+import { Head } from "./styled";
+import Logo from "./image/logo_dark.png";
 
-export function HeaderComponent () {
+export function HeaderComponent() {
   return (
-    <Head> Header </Head>
-  )
+    <Head>
+      <Head.Logo>
+        <img src={Logo}></img>
+      </Head.Logo>
+      <Head.H1>Binance stock market</Head.H1>
+    </Head>
+  );
 }

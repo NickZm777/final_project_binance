@@ -5,11 +5,15 @@ import {
   getHistoryChartData,
   changeInterval,
   changeSocketStatus,
+  initCurrencyObject,
+  updateCurrencyObject,
 } from "./../../../store/chart/action";
 
 const mapStateToProps = (state) => {
   return {
     currentCurrency: state.chart.currentCurrency,
+    currencyObject: state.chart.currencyObject,
+    isSocketOpen: state.chart.isSocketOpen,
   };
 };
 
@@ -18,6 +22,8 @@ const mapDispatchToProps = {
   getHistoryChartData,
   changeInterval,
   changeSocketStatus,
+  initCurrencyObject,
+  updateCurrencyObject,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListComponent);

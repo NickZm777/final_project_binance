@@ -5,6 +5,8 @@ import {
   GET_HISTORY_DATA_LINE,
   SET_CHART_TYPE,
   IS_SOCKET_OPEN,
+  INIT_CURRENCY_OBJECT,
+  UPDATE_CURRENCY_OBJECT,
 } from "./action";
 
 const ACTION_HANDLERS = {
@@ -30,6 +32,22 @@ const ACTION_HANDLERS = {
   [IS_SOCKET_OPEN]: (state, action) => {
     return { ...state, isSocketOpen: action.payload };
   },
+  [INIT_CURRENCY_OBJECT]: (state, action) => {
+    return { ...state, currencyObject: action.payload };
+  },
+  [UPDATE_CURRENCY_OBJECT]: (state, action) => {
+    const key = action.payload["cur"];
+    const ask = action.payload["ask"];
+    const bid = action.payload["bid"];
+
+    return {
+      ...state,
+      currencyObject: {
+        ...state.currencyObject,
+        [key]: { ask: ask, bid: bid },
+      },
+    };
+  },
 };
 
 const initialState = {
@@ -39,6 +57,7 @@ const initialState = {
   historyDataLine: [],
   isChartLine: false,
   isSocketOpen: false,
+  currencyObject: {},
 };
 
 export default (state = initialState, action) => {

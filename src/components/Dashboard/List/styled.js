@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const List = styled.div`
-  width: 150px;
+  ${"" /* width: 150px; */}
   .active {
     border: 1px solid orange;
     background-color: lightblue;
@@ -14,8 +14,12 @@ List.Item = styled.div`
   color: black;
   cursor: pointer;
   transition: 0.3s;
+  display: flex;
   &:hover {
     color: red;
+  }
+  div {
+    margin-right: 30px;
   }
 `;
 export { List };
