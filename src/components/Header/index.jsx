@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Head } from "./styled";
-import Logo from "./image/logo_dark.png";
+import Logo from "../../media/header/logo_dark.png";
 
 export function HeaderComponent() {
   return (

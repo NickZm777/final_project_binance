@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import { INTERVAL_ARRAY } from "./../../../constans/binance";
 import { List } from "./styled";
-import Candle from "./image/4.png";
-import Line from "./image/5.png";
+import Candle from "../../../media/interval/4.png";
+import Line from "../../../media/interval/5.png";
 
 export default function IntervalComponent(props) {
   const { changeInterval, setChartType, isChartLine, currentInterval } = props;
