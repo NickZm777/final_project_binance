@@ -1,5 +1,9 @@
 import React from "react";
 import { Footer } from "./styled";
+import Maestro from "../../media/footer/maestro.png";
+import Mcard from "../../media/footer/mcard.png";
+import Visa from "../../media/footer/visa.png";
+import Wire from "../../media/footer/wire.png";
 
 export function FooterComponent() {
   return (
@@ -7,24 +11,39 @@ export function FooterComponent() {
       <Footer.Top>
         <Footer.Links>
           <h3>Quick Links</h3>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+          <Footer.Box>
+            <a href="#">Contact us</a>
+
+            <a href="#">Trading Platforms</a>
+
+            <a href="#">About us</a>
+          </Footer.Box>
         </Footer.Links>
         <Footer.Credits>
-          <h3>Paqyment Methods</h3>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+          <h3>Payment Methods</h3>
+          <Footer.Box>
+            <img src={Maestro}></img>
+
+            <img src={Mcard}></img>
+
+            <img src={Visa}></img>
+
+            <img src={Wire}></img>
+          </Footer.Box>
         </Footer.Credits>
       </Footer.Top>
       <Footer.Bottom>
-        <p>
-          Legal Terms and Conditions Risk Disclosure Privacy Policy KYCEL Policy
-          AML Policy Acceptable Use Policy Deposit Policy Refund Policy
-        </p>
+        <Footer.Legal>
+          <h4>Legal</h4>
+          <p>
+            <a href="#">Terms and Conditions</a>
+            <a href="#">Risk Disclosure Privacy policy</a>
+            <a href="#">AML Policy</a>
+            <a href="#">Acceptable Use Policy </a>{" "}
+            <a href="#">Deposit Policy</a>
+            <a href="#">Refund Policy</a>
+          </p>
+        </Footer.Legal>
         <p>
           CFDJSX are complex instruments and come with a risk of losing and
           gaining money rapidly due to leverage. 72% of retail investor accounts

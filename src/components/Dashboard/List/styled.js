@@ -1,16 +1,17 @@
 import styled from "styled-components";
 
 const List = styled.div`
-  ${"" /* width: 150px; */}
+  
   .active {
-    border: 1px solid orange;
-    background-color: lightblue;
+    box-shadow: 2px 3px 10px;
+    background: transparent;
+    border-radius: 3px;
+    color: black;
     transition: 1s;
 `;
 
 List.Item = styled.div`
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding: 5px
   color: black;
   cursor: pointer;
   transition: 0.3s;
@@ -19,7 +20,7 @@ List.Item = styled.div`
     color: red;
   }
   div {
-    margin-right: 30px;
+    margin: 10px;
   }
 `;
 export { List };

@@ -6,7 +6,6 @@ const Dashboard = styled.div`
 `;
 
 Dashboard.TopInterval = styled.div`
-  border: 1px solid grey;
   margin: 15px;
 `;
 
@@ -16,7 +15,7 @@ Dashboard.Top = styled.div`
   justify-content: space-between;
   ${"" /* height: 300px; */}
   border: 1px solid grey;
-  margin: 15px;
+  margin: 5px 15px;
 `;
 
 Dashboard.Bottom = styled.div``;

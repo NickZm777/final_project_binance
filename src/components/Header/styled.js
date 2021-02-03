@@ -1,15 +1,13 @@
 import styled from "styled-components";
 
 const Head = styled.div`
-  background: #332f2ff2;
+  background: #020202;
   display: flex;
   flex-direction: row;
   width: 100%;
 `;
 
 Head.H1 = styled.h1`
-  background: #332f2ff2;
-
   flex-grow: 1;
   color: white;
   justify-content: center;
@@ -19,8 +17,8 @@ Head.H1 = styled.h1`
 
 Head.Logo = styled.div`
   align-items: center;
-  margin-left: 25px;
-  background: #332f2ff2;
+  padding: 15px 15px;
+  background: #020202;
 `;
 
 export { Head };

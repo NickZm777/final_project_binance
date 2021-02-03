@@ -3,7 +3,7 @@ import { ListBlock } from "./styled";
 
 export default function ListItem(props) {
   const { name, changeCurrency, currentCurrency, currencyObject } = props;
-  console.log(props);
+  // console.log(props);
   return (
     <ListBlock
       onClick={() => changeCurrency(name)}
