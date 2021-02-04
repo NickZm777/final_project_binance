@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
     historyData: state.chart.historyData,
     historyDataLine: state.chart.historyDataLine,
     isChartLine: state.chart.isChartLine,
+    currentObject: state.chart.currentObject,
   };
 };
 

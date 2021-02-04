@@ -10,6 +10,7 @@ export const SET_CHART_TYPE = "SET_CHART_TYPE";
 export const IS_SOCKET_OPEN = "IS_SOCKET_OPEN";
 export const INIT_CURRENCY_OBJECT = "INIT_CURRENCY_OBJECT";
 export const UPDATE_CURRENCY_OBJECT = "UPDATE_CURRENCY_OBJECT";
+export const ADD_SOCKET_DATA = "ADD_SOCKET_DATA";
 
 export function changeCurrency(currency) {
   return (dispatch) => {
@@ -103,5 +104,25 @@ export function updateCurrencyObject(object) {
       type: UPDATE_CURRENCY_OBJECT,
       payload: obj,
     });
+  };
+}
+
+export function addSocketData(object) {
+  return (dispatch, getState) => {
+    if (object["s"] === getState().chart.currentCurrency) {
+      const myObject = {
+        time: Math.round(object["E"] / 1000),
+        open: object["a"],
+        high: object["a"],
+        low: object["a"],
+        close: object["a"],
+      };
+      dispatch({
+        type: ADD_SOCKET_DATA,
+        payload: myObject,
+      });
+    } else {
+      return false;
+    }
   };
 }

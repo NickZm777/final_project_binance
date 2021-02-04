@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const List = styled.div`
-  
+  height: 350px;
   .active {
     box-shadow: 2px 3px 10px;
     background: transparent;

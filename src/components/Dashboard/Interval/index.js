@@ -12,6 +12,7 @@ export default function IntervalComponent(props) {
           return (
             <List.Item
               onClick={() => changeInterval(item)}
+              isDarkTheme={isChartLine}
               key={item}
               className={currentInterval === item ? "active" : ""}
             >

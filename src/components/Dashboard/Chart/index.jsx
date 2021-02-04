@@ -10,6 +10,7 @@ export default function ChartComponent(props) {
     currentInterval,
     isChartLine,
     historyDataLine,
+    currentObject,
   } = props;
 
   useEffect(() => {

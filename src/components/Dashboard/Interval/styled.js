@@ -54,7 +54,7 @@ List.Button = styled.div`
 
 List.Item = styled.div`
   padding: 5px 30px;
-  color: grey;
+  color: ${(props) => (props.isDarkTheme === true ? "red" : "green")};
   cursor: pointer;
   transition: 0.3s;
   &:hover {

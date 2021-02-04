@@ -7,6 +7,7 @@ import {
   IS_SOCKET_OPEN,
   INIT_CURRENCY_OBJECT,
   UPDATE_CURRENCY_OBJECT,
+  ADD_SOCKET_DATA,
 } from "./action";
 
 const ACTION_HANDLERS = {
@@ -48,6 +49,9 @@ const ACTION_HANDLERS = {
       },
     };
   },
+  [ADD_SOCKET_DATA]: (state, action) => {
+    return { ...state, historyData: [...state.historyData, action.payload] };
+  },
 };
 
 const initialState = {
@@ -58,6 +62,7 @@ const initialState = {
   isChartLine: false,
   isSocketOpen: false,
   currencyObject: {},
+  currentObject: {},
 };
 
 export default (state = initialState, action) => {

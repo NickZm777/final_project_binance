@@ -17,6 +17,7 @@ export default function ListComponent(props) {
     currencyObject,
     isSocketOpen,
     updateCurrencyObject,
+    addSocketData,
   } = props;
 
   useEffect(() => {
@@ -24,7 +25,12 @@ export default function ListComponent(props) {
       initCurrencyObject();
     }
     if (isSocketOpen === false) {
-      setSocketConnection("", changeSocketStatus, updateCurrencyObject);
+      setSocketConnection(
+        "",
+        changeSocketStatus,
+        updateCurrencyObject,
+        addSocketData
+      );
     }
   }, []);
 
