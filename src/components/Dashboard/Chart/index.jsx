@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
-import Graph from "kaktana-react-lightweight-charts";
+// import Graph from "kaktana-react-lightweight-charts";
+import { createChart } from "lightweight-charts";
 import { Chart } from "./styled";
 
 export default function ChartComponent(props) {
@@ -12,10 +13,6 @@ export default function ChartComponent(props) {
     historyDataLine,
     currentObject,
   } = props;
-
-  useEffect(() => {
-    getHistoryChartData("candle", currentCurrency, currentInterval, "500");
-  }, [currentCurrency, currentInterval]);
 
   const options = {
     alignLabels: true,
@@ -33,29 +30,54 @@ export default function ChartComponent(props) {
     },
   };
 
-  const candlestickSeries = [
-    {
-      data: historyData,
-    },
-  ];
-
   const areaSeries = [
     {
       data: historyDataLine,
     },
   ];
 
+  let chart;
+
+  function initGraph() {
+    chart = createChart(document.body, {
+      width: 400,
+      height: 300,
+    });
+    const candlestickSeries = chart.addCandlestickSeries();
+    candlestickSeries.setData(historyData);
+    graphRenderFunction(true);
+    setCandlestickSeries(candlestickSeries);
+  }
+
+  function updateGraph(object) {
+    candlestickSeries.update(object);
+  }
+
+  const [isGraphrender, graphRenderFunction] = useState(false);
+  const [mycandlestickSeries, setCandlestickSeries] = useState([]);
+
+  useEffect(() => {
+    if (!isGraphrender && historyData.length !== 0) {
+      initGraph();
+    }
+  }, [historyData]);
+
+  useEffect(() => {
+    getHistoryChartData("candle", currentCurrency, currentInterval, "500");
+  }, [currentCurrency, currentInterval]);
+
+  useEffect(() => {
+    if (
+      mycandlestickSeries.length !== 0 &&
+      Object.keys(currentObject).length !== 0
+    ) {
+      mycandlestickSeries.update(currentObject);
+    }
+  }, [currentObject]);
+
   return (
     <Fragment>
-      <Chart>
-        <Graph
-          options={options}
-          candlestickSeries={isChartLine ? null : candlestickSeries}
-          areaSeries={isChartLine && areaSeries}
-          autoWidth
-          autoHeight
-        />
-      </Chart>
+      <Chart className="graph"></Chart>
     </Fragment>
   );
 }

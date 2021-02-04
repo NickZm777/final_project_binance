@@ -110,6 +110,7 @@ export function updateCurrencyObject(object) {
 export function addSocketData(object) {
   return (dispatch, getState) => {
     if (object["s"] === getState().chart.currentCurrency) {
+      const interval = getState().chart.currentInterval;
       const myObject = {
         time: Math.round(object["E"] / 1000),
         open: object["a"],

@@ -50,7 +50,7 @@ const ACTION_HANDLERS = {
     };
   },
   [ADD_SOCKET_DATA]: (state, action) => {
-    return { ...state, historyData: [...state.historyData, action.payload] };
+    return { ...state, currentObject: action.payload };
   },
 };
 
