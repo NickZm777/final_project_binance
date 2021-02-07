@@ -15,6 +15,7 @@ const mapStateToProps = (state) => {
     currentCurrency: state.chart.currentCurrency,
     currencyObject: state.chart.currencyObject,
     isSocketOpen: state.chart.isSocketOpen,
+    candleObject: state.chart.candleObject,
   };
 };
 

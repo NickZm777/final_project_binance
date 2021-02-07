@@ -9,11 +9,24 @@ import {
   UPDATE_CURRENCY_OBJECT,
   ADD_SOCKET_DATA,
   CHANGE_THEME,
+  ADD_NEW_CANDLE,
+  UPDATE_CURENT_CANDLE,
 } from "./action";
 
 const ACTION_HANDLERS = {
   [CHANGE_CURRENCY]: (state, action) => {
-    return { ...state, currentCurrency: action.payload };
+    return {
+      ...state,
+      currentCurrency: action.payload,
+      candleObject: {
+        startCandleTime: 0,
+        finishCandleTime: 0,
+        openPrice: 0,
+        closePrice: 0,
+        highPrice: 0,
+        lowPrice: 0,
+      },
+    };
   },
   [GET_HISTORY_DATA]: (state, action) => {
     return {
@@ -56,6 +69,31 @@ const ACTION_HANDLERS = {
   [CHANGE_THEME]: (state, action) => {
     return { ...state, isThemeDark: action.payload };
   },
+  [ADD_NEW_CANDLE]: (state, action) => {
+    return {
+      ...state,
+      candleObject: {
+        ...state.candleObject,
+        startCandleTime: action.startCandleTime,
+        finishCandleTime: action.finishCandleTime,
+        openPrice: action.openPrice,
+        closePrice: action.closePrice,
+        highPrice: action.highPrice,
+        lowPrice: action.lowPrice,
+      },
+    };
+  },
+  [UPDATE_CURENT_CANDLE]: (state, action) => {
+    return {
+      ...state,
+      candleObject: {
+        ...state.candleObject,
+        closePrice: action.close,
+        highPrice: action.high,
+        lowPrice: action.low,
+      },
+    };
+  },
 };
 
 const initialState = {
@@ -68,6 +106,14 @@ const initialState = {
   currencyObject: {},
   currentObject: {},
   isThemeDark: false,
+  candleObject: {
+    startCandleTime: 0,
+    finishCandleTime: 0,
+    openPrice: 0,
+    closePrice: 0,
+    highPrice: 0,
+    lowPrice: 0,
+  },
 };
 
 export default (state = initialState, action) => {

@@ -12,6 +12,8 @@ export const INIT_CURRENCY_OBJECT = "INIT_CURRENCY_OBJECT";
 export const UPDATE_CURRENCY_OBJECT = "UPDATE_CURRENCY_OBJECT";
 export const ADD_SOCKET_DATA = "ADD_SOCKET_DATA";
 export const CHANGE_THEME = "CHANGE_THEME";
+export const ADD_NEW_CANDLE = "ADD_NEW_CANDLE";
+export const UPDATE_CURENT_CANDLE = "UPDATE_CURENT_CANDLE";
 
 export function changeCurrency(currency) {
   return (dispatch) => {
@@ -111,6 +113,7 @@ export function updateCurrencyObject(object) {
 export function addSocketData(object) {
   return (dispatch, getState) => {
     if (object["s"] === getState().chart.currentCurrency) {
+      const storeObject = getState().chart.candleObject;
       const interval = getState().chart.currentInterval;
       const myObject = {
         time: Math.round(object["E"] / 1000),
@@ -119,10 +122,30 @@ export function addSocketData(object) {
         low: object["a"],
         close: object["a"],
       };
-      dispatch({
-        type: ADD_SOCKET_DATA,
-        payload: myObject,
-      });
+      if (object["E"] / 1000 > storeObject["finishCandleTime"]) {
+        dispatch({
+          type: ADD_NEW_CANDLE,
+          startCandleTime: Math.round(object["E"] / 1000),
+          finishCandleTime: Math.round(object["E"] / 1000 + 10),
+          openPrice: object["a"],
+          highPrice: object["a"],
+          lowPrice: object["a"],
+          closePrice: object["a"],
+        });
+      } else {
+        let close = object["a"];
+        let high = getState().chart.candleObject.highPrice;
+        let low = getState().chart.candleObject.lowPrice;
+        object["a"] > high && (high = object["a"]);
+        object["a"] < low && (low = object["a"]);
+
+        dispatch({
+          type: UPDATE_CURENT_CANDLE,
+          close: close,
+          high: high,
+          low: low,
+        });
+      }
     } else {
       return false;
     }

@@ -12,6 +12,7 @@ export default function ChartComponent(props) {
     isChartLine,
     historyDataLine,
     currentObject,
+    candleObject,
   } = props;
 
   const areaSeries = [
@@ -56,17 +57,32 @@ export default function ChartComponent(props) {
   }, [historyData, isGraphrender]);
 
   useEffect(() => {
+    if (historyData.length !== 0) {
+      mycandlestickSeries.setData(historyData);
+    }
+  }, [historyData]);
+
+  useEffect(() => {
     getHistoryChartData("candle", currentCurrency, currentInterval, "500");
   }, [currentCurrency, currentInterval]);
 
   useEffect(() => {
     if (
       mycandlestickSeries.length !== 0 &&
-      Object.keys(currentObject).length !== 0
+      Object.keys(candleObject).length !== 0
     ) {
-      mycandlestickSeries.update(currentObject);
+      const resultObject = {
+        time: candleObject.startCandleTime,
+        open: candleObject.openPrice,
+        high: candleObject.highPrice,
+        low: candleObject.lowPrice,
+        close: candleObject.closePrice,
+      };
+      if (resultObject.time !== 0) {
+        mycandlestickSeries.update(resultObject);
+      }
     }
-  }, [currentObject]);
+  }, [candleObject]);
 
   return (
     <Fragment>
