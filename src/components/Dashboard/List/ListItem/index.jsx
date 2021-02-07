@@ -3,23 +3,23 @@ import { ListBlock } from "./styled";
 
 export default function ListItem(props) {
   const { name, changeCurrency, currentCurrency, currencyObject } = props;
-  // console.log(props);
+
   return (
     <ListBlock
       onClick={() => changeCurrency(name)}
       className={currentCurrency === name ? "active" : ""}
     >
-      <div>{name}</div>
-      <div>
+      <ListBlock.Body>{name}</ListBlock.Body>
+      <ListBlock.Body>
         {currencyObject !== undefined &&
           currencyObject.ask &&
-          currencyObject.ask}
-      </div>
-      <div>
+          parseFloat(currencyObject.ask).toFixed(3)}
+      </ListBlock.Body>
+      <ListBlock.Body>
         {currencyObject !== undefined &&
           currencyObject.ask &&
-          currencyObject.bid}
-      </div>
+          parseFloat(currencyObject.bid).toFixed(3)}
+      </ListBlock.Body>
     </ListBlock>
   );
 }

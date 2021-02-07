@@ -1,12 +1,22 @@
 import styled from "styled-components";
 
 const ListBlock = styled.div`
-  padding: 10px 15px;
-
+  margin: 8px 5px;
+  justify-content: space-between;
   display: flex;
   div {
-    margin-right: 30px;
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+  &:hover {
+    color: black;
   }
 `;
+
+ListBlock.Head = styled.div`
+  display: flex;
+`;
+
+ListBlock.Body = styled.div``;
 
 export { ListBlock };

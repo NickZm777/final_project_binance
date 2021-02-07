@@ -14,22 +14,6 @@ export default function ChartComponent(props) {
     currentObject,
   } = props;
 
-  const options = {
-    alignLabels: true,
-    timeScale: {
-      rightOffset: 12,
-      barSpacing: 3,
-      fixLeftEdge: true,
-      lockVisibleTimeRangeOnResize: true,
-      rightBarStaysOnScroll: true,
-      borderVisible: true,
-      borderColor: "#fff000",
-      visible: true,
-      timeVisible: true,
-      secondsVisible: false,
-    },
-  };
-
   const areaSeries = [
     {
       data: historyDataLine,
@@ -39,18 +23,27 @@ export default function ChartComponent(props) {
   let chart;
 
   function initGraph() {
-    chart = createChart(document.body, {
-      width: 400,
-      height: 300,
+    chart = createChart(document.getElementById("chart"), {
+      width: 1200,
+      height: 440,
+      alignLabels: true,
+      timeScale: {
+        rightOffset: 12,
+        barSpacing: 3,
+        fixLeftEdge: true,
+        lockVisibleTimeRangeOnResize: true,
+        rightBarStaysOnScroll: true,
+        borderVisible: true,
+        borderColor: "grey",
+        visible: true,
+        timeVisible: true,
+        secondsVisible: false,
+      },
     });
     const candlestickSeries = chart.addCandlestickSeries();
     candlestickSeries.setData(historyData);
     graphRenderFunction(true);
     setCandlestickSeries(candlestickSeries);
-  }
-
-  function updateGraph(object) {
-    candlestickSeries.update(object);
   }
 
   const [isGraphrender, graphRenderFunction] = useState(false);
@@ -60,7 +53,7 @@ export default function ChartComponent(props) {
     if (!isGraphrender && historyData.length !== 0) {
       initGraph();
     }
-  }, [historyData]);
+  }, [historyData, isGraphrender]);
 
   useEffect(() => {
     getHistoryChartData("candle", currentCurrency, currentInterval, "500");
@@ -77,7 +70,9 @@ export default function ChartComponent(props) {
 
   return (
     <Fragment>
-      <Chart className="graph"></Chart>
+      <Chart className="graph">
+        <div id="chart"></div>
+      </Chart>
     </Fragment>
   );
 }

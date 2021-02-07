@@ -8,6 +8,7 @@ import {
   INIT_CURRENCY_OBJECT,
   UPDATE_CURRENCY_OBJECT,
   ADD_SOCKET_DATA,
+  CHANGE_THEME,
 } from "./action";
 
 const ACTION_HANDLERS = {
@@ -52,6 +53,9 @@ const ACTION_HANDLERS = {
   [ADD_SOCKET_DATA]: (state, action) => {
     return { ...state, currentObject: action.payload };
   },
+  [CHANGE_THEME]: (state, action) => {
+    return { ...state, isThemeDark: action.payload };
+  },
 };
 
 const initialState = {
@@ -63,6 +67,7 @@ const initialState = {
   isSocketOpen: false,
   currencyObject: {},
   currentObject: {},
+  isThemeDark: false,
 };
 
 export default (state = initialState, action) => {

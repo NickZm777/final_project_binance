@@ -36,6 +36,12 @@ export default function ListComponent(props) {
 
   return (
     <List>
+      <List.Head>
+        <div>Pair</div>
+        <div>Ask price</div>
+        <div>Bid price</div>
+      </List.Head>
+
       {CURRENCY_ARRAY.map((item) => {
         return (
           <ListItem

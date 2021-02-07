@@ -5,6 +5,7 @@ import {
   getHistoryChartData,
   changeInterval,
   setChartType,
+  setThemeType,
 } from "./../../../store/chart/action";
 
 const mapStateToProps = (state) => {
@@ -12,6 +13,7 @@ const mapStateToProps = (state) => {
     currentCurrency: state.chart.currentCurrency,
     currentInterval: state.chart.currentInterval,
     isChartLine: state.chart.isChartLine,
+    isThemeDark: state.chart.isThemeDark,
   };
 };
 
@@ -20,6 +22,7 @@ const mapDispatchToProps = {
   getHistoryChartData,
   changeInterval,
   setChartType,
+  setThemeType,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(IntervalComponent);

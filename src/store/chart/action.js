@@ -11,6 +11,7 @@ export const IS_SOCKET_OPEN = "IS_SOCKET_OPEN";
 export const INIT_CURRENCY_OBJECT = "INIT_CURRENCY_OBJECT";
 export const UPDATE_CURRENCY_OBJECT = "UPDATE_CURRENCY_OBJECT";
 export const ADD_SOCKET_DATA = "ADD_SOCKET_DATA";
+export const CHANGE_THEME = "CHANGE_THEME";
 
 export function changeCurrency(currency) {
   return (dispatch) => {
@@ -124,6 +125,17 @@ export function addSocketData(object) {
       });
     } else {
       return false;
+    }
+  };
+}
+
+export function setThemeType(type) {
+  return (dispatch, getState) => {
+    if (getState().chart.isThemeDark !== type) {
+      dispatch({
+        type: CHANGE_THEME,
+        payload: type,
+      });
     }
   };
 }
