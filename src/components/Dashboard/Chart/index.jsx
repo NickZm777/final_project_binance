@@ -40,6 +40,29 @@ export default function ChartComponent(props) {
         timeVisible: true,
         secondsVisible: false,
       },
+      localization: {
+        priceFormatter: function (price) {
+          return "$" + price;
+        },
+      },
+      layout: {
+        backgroundColor: "#1e1e1f",
+        textColor: "#696969",
+        fontSize: 12,
+        fontFamily: "Calibri",
+      },
+      grid: {
+        vertLines: {
+          color: "#262525",
+          style: 1,
+          visible: true,
+        },
+        horzLines: {
+          color: "#262525",
+          style: 1,
+          visible: true,
+        },
+      },
     });
     const candlestickSeries = chart.addCandlestickSeries();
     candlestickSeries.setData(historyData);
@@ -83,6 +106,11 @@ export default function ChartComponent(props) {
       }
     }
   }, [candleObject]);
+
+  function initLine() {
+    const areaSeries = chart.addAreaSeries();
+    areaSeries.setData(historyDataLine);
+  }
 
   return (
     <Fragment>

@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import { INTERVAL_ARRAY } from "./../../../constans/binance";
 import { List } from "./styled";
+import light from "../../../media/interval/sun.png";
+import dark from "../../../media/interval/moon.png";
 
 export default function IntervalComponent(props) {
   const {
@@ -52,11 +54,7 @@ export default function IntervalComponent(props) {
         className={isThemeDark ? "passive" : "active"}
         isDarkTheme={isThemeDark}
       >
-        {isThemeDark ? (
-          <div className="dark">Dark</div>
-        ) : (
-          <div className="light">Light</div>
-        )}
+        {isThemeDark ? <img src={dark}></img> : <img src={light}></img>}
       </List.Theme>
     </List>
   );

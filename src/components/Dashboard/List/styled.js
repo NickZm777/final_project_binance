@@ -9,6 +9,7 @@ const List = styled.div`
     border-radius: 3px;
     color: ${(props) => (!props.dark === true ? "#92a0ea" : "black")};
     transition: 0.2s;
+    color: ${(props) => (!props.dark === true ? "#f0b90b" : "black")};
   }
 `;
 List.Head = styled.div`

@@ -9,7 +9,7 @@ const ListBlock = styled.div`
     padding: 5px 10px;
   }
   &:hover {
-    color: black;
+    color: ${(props) => (!props.dark === true ? "#e8b00a" : "black")};
   }
 `;
 

@@ -15,7 +15,11 @@ Footer.Top = styled.div`
 `;
 
 Footer.Links = styled.div``;
-Footer.Credits = styled.div``;
+Footer.Credits = styled.div`
+  img {
+    object-fit: contain;
+  }
+`;
 
 Footer.Bottom = styled.div`
   background: #212123;

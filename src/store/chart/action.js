@@ -114,7 +114,24 @@ export function addSocketData(object) {
   return (dispatch, getState) => {
     if (object["s"] === getState().chart.currentCurrency) {
       const storeObject = getState().chart.candleObject;
-      const interval = getState().chart.currentInterval;
+      const currentInterval = getState().chart.currentInterval;
+      const interval = {
+        "1m": 60,
+        "3m": 120,
+        "5m": 300,
+        "15m": 900,
+        "1h": 3600,
+        "2h": 7200,
+        "4h": 14400,
+        "6h": 21600,
+        "8h": 28800,
+        "12h": 43200,
+        "1d": 86400,
+        "3d": 259200,
+        "1w": 604800,
+        "1M": 2678400,
+      };
+
       const myObject = {
         time: Math.round(object["E"] / 1000),
         open: object["a"],
@@ -126,7 +143,9 @@ export function addSocketData(object) {
         dispatch({
           type: ADD_NEW_CANDLE,
           startCandleTime: Math.round(object["E"] / 1000),
-          finishCandleTime: Math.round(object["E"] / 1000 + 10),
+          finishCandleTime: Math.round(
+            object["E"] / 1000 + interval[currentInterval]
+          ),
           openPrice: object["a"],
           highPrice: object["a"],
           lowPrice: object["a"],
