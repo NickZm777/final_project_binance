@@ -3,6 +3,7 @@ import styled from "styled-components";
 const Dashboard = styled.div`
   display: flex;
   flex-direction: column;
+  background: ${(props) => (!props.dark === true ? "#0f0e0ee6" : "#fbfbfb")};
 `;
 
 Dashboard.TopInterval = styled.div`
@@ -13,7 +14,9 @@ Dashboard.Top = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  ${"" /* height: 300px; */}
+
+  background: ${(props) => (props.dark === true ? "blue" : "transparent")};
+
   border: 1px solid grey;
   margin: 5px 15px;
 `;

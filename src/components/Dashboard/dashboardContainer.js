@@ -1,4 +1,4 @@
-import ListComponent from "./index.jsx";
+import { DashboardComponent } from "./index.jsx";
 import { connect } from "react-redux";
 import {
   changeCurrency,
@@ -8,7 +8,8 @@ import {
   initCurrencyObject,
   updateCurrencyObject,
   addSocketData,
-} from "./../../../store/chart/action";
+  setThemeType,
+} from "../../store/chart/action";
 
 const mapStateToProps = (state) => {
   return {
@@ -28,6 +29,7 @@ const mapDispatchToProps = {
   initCurrencyObject,
   updateCurrencyObject,
   addSocketData,
+  setThemeType,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardComponent);

@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 const List = styled.div`
-  
   cursor: pointer;
-  color:#716767;
+  color: ${(props) => (!props.dark === true ? "#92a0ea" : "#716767")};
   .active {
     box-shadow: 2px 3px 10px;
     background: transparent;
     border-radius: 3px;
-    color: black;
-    transition: .2s;
+    color: ${(props) => (!props.dark === true ? "#92a0ea" : "black")};
+    transition: 0.2s;
+  }
 `;
 List.Head = styled.div`
   display: flex;
@@ -23,8 +23,7 @@ List.Head = styled.div`
   }
 `;
 List.Item = styled.div`
-  padding: 5px
-  color: black;
+  padding: 5px;
   cursor: pointer;
   transition: 0.3s;
   display: flex;

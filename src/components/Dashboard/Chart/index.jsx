@@ -25,7 +25,7 @@ export default function ChartComponent(props) {
 
   function initGraph() {
     chart = createChart(document.getElementById("chart"), {
-      width: 1200,
+      width: 1000,
       height: 440,
       alignLabels: true,
       timeScale: {
@@ -57,7 +57,7 @@ export default function ChartComponent(props) {
   }, [historyData, isGraphrender]);
 
   useEffect(() => {
-    if (historyData.length !== 0) {
+    if (historyData.length !== 0 && mycandlestickSeries.length !== 0) {
       mycandlestickSeries.setData(historyData);
     }
   }, [historyData]);

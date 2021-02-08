@@ -14,7 +14,7 @@ export default function IntervalComponent(props) {
 
   return (
     <List>
-      <List.IntChanger>
+      <List.IntChanger isDarkTheme={isThemeDark}>
         {INTERVAL_ARRAY.map((item) => {
           return (
             <List.Item
@@ -29,14 +29,16 @@ export default function IntervalComponent(props) {
         })}
       </List.IntChanger>
 
-      <List.GrChanger>
+      <List.GrChanger isDarkTheme={isThemeDark}>
         <List.Button
+          isDarkTheme={isThemeDark}
           onClick={() => setChartType(false)}
           className={isChartLine ? "active" : ""}
         >
           Candle
         </List.Button>
         <List.Button
+          isDarkTheme={isThemeDark}
           onClick={() => setChartType(true)}
           className={!isChartLine ? "active" : ""}
         >
@@ -44,16 +46,17 @@ export default function IntervalComponent(props) {
         </List.Button>
       </List.GrChanger>
       <List.Theme
-        onClick={() => setThemeType(true)}
+        onClick={
+          isThemeDark ? () => setThemeType(false) : () => setThemeType(true)
+        }
         className={isThemeDark ? "passive" : "active"}
+        isDarkTheme={isThemeDark}
       >
-        Light
-      </List.Theme>
-      <List.Theme
-        onClick={() => setThemeType(false)}
-        className={!isThemeDark ? "passive" : "active"}
-      >
-        Dark
+        {isThemeDark ? (
+          <div className="dark">Dark</div>
+        ) : (
+          <div className="light">Light</div>
+        )}
       </List.Theme>
     </List>
   );

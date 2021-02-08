@@ -18,6 +18,7 @@ export default function ListComponent(props) {
     isSocketOpen,
     updateCurrencyObject,
     addSocketData,
+    isThemeDark,
   } = props;
 
   useEffect(() => {
@@ -35,7 +36,7 @@ export default function ListComponent(props) {
   }, []);
 
   return (
-    <List>
+    <List dark={isThemeDark}>
       <List.Head>
         <div>Pair</div>
         <div>Ask price</div>
@@ -45,6 +46,7 @@ export default function ListComponent(props) {
       {CURRENCY_ARRAY.map((item) => {
         return (
           <ListItem
+            dark={isThemeDark}
             changeCurrency={changeCurrency}
             currentCurrency={currentCurrency}
             currencyObject={currencyObject[item]}
