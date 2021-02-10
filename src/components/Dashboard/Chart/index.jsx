@@ -41,7 +41,7 @@ export default function ChartComponent(props) {
         },
       },
       layout: {
-        backgroundColor: isThemeDark === false ? "#1e1e1f" : "white",
+        backgroundColor: isThemeDark === false ? "#1e1e1fb5" : "white",
         textColor: "#696969",
         fontSize: 12,
         fontFamily: "Calibri",
