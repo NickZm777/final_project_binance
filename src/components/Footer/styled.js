@@ -7,6 +7,7 @@ const Footer = styled.div`
 
 Footer.Top = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   background: #1e1e1f;
   color: #cccccc;
@@ -47,6 +48,7 @@ Footer.Legal = styled.div`
 
 Footer.Box = styled.div`
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   a {
     text-decoration: none;

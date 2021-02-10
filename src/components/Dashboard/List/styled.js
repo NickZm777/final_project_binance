@@ -7,13 +7,13 @@ const List = styled.div`
     box-shadow: 2px 3px 10px;
     background: transparent;
     border-radius: 3px;
-    color: ${(props) => (!props.dark === true ? "#92a0ea" : "black")};
     transition: 0.2s;
     color: ${(props) => (!props.dark === true ? "#f0b90b" : "black")};
   }
 `;
 List.Head = styled.div`
   display: flex;
+
   font-size: 12px;
   padding: 2px 0;
   justify-content: space-around;
@@ -28,6 +28,7 @@ List.Item = styled.div`
   cursor: pointer;
   transition: 0.3s;
   display: flex;
+
   &:hover {
     color: red;
   }

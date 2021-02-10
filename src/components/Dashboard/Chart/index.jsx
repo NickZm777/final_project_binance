@@ -13,19 +13,14 @@ export default function ChartComponent(props) {
     historyDataLine,
     currentObject,
     candleObject,
+    isThemeDark,
   } = props;
-
-  const areaSeries = [
-    {
-      data: historyDataLine,
-    },
-  ];
 
   let chart;
 
   function initGraph() {
     chart = createChart(document.getElementById("chart"), {
-      width: 1000,
+      width: 1300,
       height: 440,
       alignLabels: true,
       timeScale: {
@@ -46,44 +41,94 @@ export default function ChartComponent(props) {
         },
       },
       layout: {
-        backgroundColor: "#1e1e1f",
+        backgroundColor: isThemeDark === false ? "#1e1e1f" : "white",
         textColor: "#696969",
         fontSize: 12,
         fontFamily: "Calibri",
       },
       grid: {
         vertLines: {
-          color: "#262525",
+          color: isThemeDark === false ? "#262525" : "#939292a3",
           style: 1,
           visible: true,
         },
         horzLines: {
-          color: "#262525",
+          color: isThemeDark === false ? "#262525" : "#939292a3",
           style: 1,
           visible: true,
         },
       },
     });
-    const candlestickSeries = chart.addCandlestickSeries();
-    candlestickSeries.setData(historyData);
-    graphRenderFunction(true);
-    setCandlestickSeries(candlestickSeries);
+
+    if (isChartLine === false) {
+      const candlestickSeries = chart.addCandlestickSeries();
+      candlestickSeries.setData(historyData);
+      graphRenderFunction(true);
+      setCandlestickSeries(candlestickSeries);
+    } else {
+      const candlestickSeries = chart.addAreaSeries();
+      candlestickSeries.setData(historyDataLine);
+      graphRenderFunction(true);
+      setCandlestickSeries(candlestickSeries);
+    }
   }
+
+  // function initLine() {
+  //   chart = createChart(document.getElementById("chart"));
+  //   const areaSeries = chart.addAreaSeries();
+  //   areaSeries.setData(historyDataLine);
+  //   graphRenderFunction(true);
+  //   setCandlestickSeries(areaSeries);
+  // }
 
   const [isGraphrender, graphRenderFunction] = useState(false);
   const [mycandlestickSeries, setCandlestickSeries] = useState([]);
 
   useEffect(() => {
-    if (!isGraphrender && historyData.length !== 0) {
+    if (
+      !isGraphrender &&
+      historyData.length !== 0 &&
+      historyDataLine.length !== 0
+    ) {
       initGraph();
     }
-  }, [historyData, isGraphrender]);
+  }, [historyData, historyDataLine, isGraphrender]);
+
+  // useEffect(() => {
+  //   if (
+  //     !isGraphrender &&
+  //     historyDataLine.length !== 0 &&
+  //     isChartLine === true
+  //   ) {
+  //     initLine();
+  //   }
+  // }, [historyDataLine, isGraphrender]);
 
   useEffect(() => {
-    if (historyData.length !== 0 && mycandlestickSeries.length !== 0) {
+    if (
+      historyData.length !== 0 &&
+      mycandlestickSeries.length !== 0 &&
+      isChartLine === false
+    ) {
       mycandlestickSeries.setData(historyData);
+    } else if (
+      historyDataLine.length !== 0 &&
+      mycandlestickSeries.length !== 0 &&
+      isChartLine === true
+    ) {
+      mycandlestickSeries.setData(historyDataLine);
     }
-  }, [historyData]);
+  }, [historyData, historyDataLine, isChartLine]);
+
+  // useEffect(() => {
+  //   if (
+  //     historyDataLine.length !== 0 &&
+  //     mycandlestickSeries.length !== 0 &&
+  //     isChartLine === true
+  //   ) {
+  //     mycandlestickSeries.setData(historyDataLine);
+  //   }
+  // }, [historyDataLine]);
 
   useEffect(() => {
     getHistoryChartData("candle", currentCurrency, currentInterval, "500");
@@ -106,11 +151,6 @@ export default function ChartComponent(props) {
       }
     }
   }, [candleObject]);
-
-  function initLine() {
-    const areaSeries = chart.addAreaSeries();
-    areaSeries.setData(historyDataLine);
-  }
 
   return (
     <Fragment>

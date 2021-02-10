@@ -3,6 +3,7 @@ import styled from "styled-components";
 const Head = styled.div`
   background: #262626;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   width: 100%;
 `;
