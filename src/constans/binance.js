@@ -10,7 +10,7 @@ export const BTCUAH = "BTCUAH";
 export const BTCBRL = "BTCBRL";
 export const BTCPAX = "BTCPAX";
 export const ETHAUD = "ETHAUD";
-export const ETHNGN = "ETHNGN";
+export const BTCZAR = "BTCZAR";
 export const XLMTRY = "XLMTRY";
 export const LTCRUB = "LTCRUB";
 
@@ -40,7 +40,7 @@ export const CURRENCY_ARRAY = [
   BTCBRL,
   BTCPAX,
   ETHAUD,
-  ETHNGN,
+  BTCZAR,
   XLMTRY,
   LTCRUB,
 ];
