@@ -1,4 +1,4 @@
-import { ListItem } from "./index.jsx";
+import ListItem from "./index.jsx";
 import { connect } from "react-redux";
 import {
   changeCurrency,
@@ -9,7 +9,7 @@ import {
   updateCurrencyObject,
   addSocketData,
   setThemeType,
-} from "../../store/chart/action";
+} from "../../../../store/chart/action";
 
 const mapStateToProps = (state) => {
   return {

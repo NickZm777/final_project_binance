@@ -17,7 +17,7 @@ Dashboard.Top = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  background: ${(props) => (props.dark === true ? "blue" : "transparent")};
+  background: ${(props) => (props.dark === true ? "white" : "transparent")};
 
   border: 1px solid grey;
   margin: 5px 15px;

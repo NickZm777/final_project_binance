@@ -5,7 +5,7 @@ import IntervalComponent from "./Interval/IntervalContainer";
 import ChartComponent from "./Chart/ChartContainer";
 import { Dashboard } from "./styled";
 
-export function DashboardComponent(props) {
+export default function DashboardComponent(props) {
   const { isThemeDark } = props;
   return (
     <Dashboard dark={isThemeDark}>

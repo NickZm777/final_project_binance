@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import ListItem from "./ListItem/index.jsx";
+import ListItem from "./ListItem/index";
 import { CURRENCY_ARRAY } from "./../../../constans/binance";
 import {
   disconnectSocketConnection,

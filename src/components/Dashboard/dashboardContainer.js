@@ -1,4 +1,4 @@
-import { DashboardComponent } from "./index.jsx";
+import DashboardComponent from "./index.jsx";
 import { connect } from "react-redux";
 import {
   changeCurrency,

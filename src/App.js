@@ -1,6 +1,6 @@
 import "./App.css";
 import { HeaderComponent } from "./components/Header/index";
-import { DashboardComponent } from "./components/Dashboard/index";
+import DashboardComponent from "./components/Dashboard/dashboardContainer";
 import { FooterComponent } from "./components/Footer/index";
 
 function App() {
